@@ -28,6 +28,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${newsreader.variable} scroll-smooth`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.location.hostname !== 'localhost') {
+                console.log = function() {};
+                console.error = function() {};
+                console.warn = function() {};
+                console.info = function() {};
+                console.debug = function() {};
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="bg-void text-bone antialiased">
         <div className="grain-overlay" aria-hidden="true" />
         {children}

@@ -12,11 +12,9 @@ export interface SkillItem {
 export async function getSkills(): Promise<SkillItem[]> {
   const skillsDirectory = path.join(process.cwd(), 'skills');
   let fileNames: string[] = [];
-  
   try {
     fileNames = fs.readdirSync(skillsDirectory);
   } catch (error) {
-    console.error("No skills directory found or error reading it:", error);
     return [];
   }
 

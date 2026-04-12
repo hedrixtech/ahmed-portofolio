@@ -11,7 +11,6 @@ const syne = Syne({
 const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-newsreader",
-  weight: ["400", "500"],
   style: ["normal", "italic"],
 });
 

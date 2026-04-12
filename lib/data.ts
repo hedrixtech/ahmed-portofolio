@@ -60,12 +60,14 @@ export const experiences = [
     ],
   },
   {
-    title: "Backend Systems & Integrations",
+    title: "Cloud Infrastructure & Backend Integrations",
+    role: "System Integrator",
+    timeline: "2024 - Present",
     highlights: [
-      "Deployed backend systems on AWS EC2",
-      "Integrated PayPal APIs for payments",
-      "Built AI moderation systems",
-      "Designed REST APIs for multi-platform usage",
+      "Architected and deployed production environments on AWS EC2 with auto-scaling",
+      "Integrated secure payment gateways including PayPal and Stripe APIs",
+      "Developed custom AI moderation pipelines for automated content safety",
+      "Designed high-performance REST APIs for cross-platform data synchronization",
     ],
   },
 ];

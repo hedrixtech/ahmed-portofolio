@@ -10,8 +10,7 @@ import {
   Network, 
   Cpu, 
   Layout, 
-  Wrench,
-  CheckCircle2
+  Wrench
 } from "lucide-react";
 
 const skillCategories = [

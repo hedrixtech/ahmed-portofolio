@@ -2,9 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { TypeWriter } from "./ui/TypeWriter";
 import { Hero3D } from "./Hero3D";
-import { personalData } from "@/lib/data";
 
 export const Hero = () => {
   return (

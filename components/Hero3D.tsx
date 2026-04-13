@@ -9,7 +9,7 @@ export const Hero3D = () => {
     let lastX = window.innerWidth / 2;
     let lastY = window.innerHeight / 2;
 
-    const postToIframe = (data: any) => {
+    const postToIframe = (data: Record<string, unknown>) => {
       if (iframeRef.current && iframeRef.current.contentWindow) {
         iframeRef.current.contentWindow.postMessage(data, "*");
       }

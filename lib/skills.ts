@@ -14,7 +14,7 @@ export async function getSkills(): Promise<SkillItem[]> {
   let fileNames: string[] = [];
   try {
     fileNames = fs.readdirSync(skillsDirectory);
-  } catch (error) {
+  } catch {
     return [];
   }
 

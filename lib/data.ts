@@ -1,8 +1,7 @@
 export const personalData = {
   name: "Ahmed",
   role: "Software Engineer | System Designer | Mobile + Backend + AI Developer",
-  location: "New Cairo, Egypt",
-  education: "Bachelor of Computer Engineering",
+  education: "Bachelor of Computer Engineering (Expected 2029)",
   summary:
     "Software engineer focused on scalable cross-platform applications, backend systems, and AI-integrated products. Experienced in designing and deploying cloud-based architectures using AWS, Firebase, and Appwrite. Strong background in system design, modular architecture, dashboards, and full-stack product engineering.",
 };

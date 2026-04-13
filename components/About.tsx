@@ -42,17 +42,6 @@ export const About = () => {
 
           <div>
             <div className="font-display text-[10px] uppercase tracking-[0.3em] text-stone mb-2">
-              Base
-            </div>
-            <div className="font-display font-bold text-sm text-bone">
-              {personalData.location}
-            </div>
-          </div>
-
-          <div className="h-[1px] bg-hairline" />
-
-          <div>
-            <div className="font-display text-[10px] uppercase tracking-[0.3em] text-stone mb-2">
               Foundation
             </div>
             <div className="font-display font-bold text-sm text-bone">

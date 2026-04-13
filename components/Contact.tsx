@@ -15,8 +15,7 @@ export const Contact = () => {
         className="max-w-2xl"
       >
         <p className="font-body italic text-lg md:text-2xl text-bone/80 leading-relaxed mb-8 md:mb-12">
-          Available for engineering roles, system design consulting, and
-          cross-platform development collaborations. Let&apos;s build something at scale.
+        Focused primarily on the development of scalable backend systems and high-performance applications across different platforms. For any major technical collaborations or engineering roles, feel free to contact via the following details.
         </p>
 
         <div className="space-y-4">

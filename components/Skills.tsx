@@ -58,7 +58,7 @@ const skillCategories = [
 
 export const Skills = () => {
   return (
-    <SectionWrapper id="skills" index="02" title="Technical Matrix">
+    <SectionWrapper id="skills" index="02" title="Technical Skills">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {skillCategories.map((category, idx) => (
           <motion.div

@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Hero3D } from "./Hero3D";
 
-export const Hero = () => {
+interface HeroProps {
+  onLoaded?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
   return (
     <section
       id="hero"
@@ -12,7 +16,7 @@ export const Hero = () => {
     >
       {/* 3D CORE COMPONENT */}
       <div className="absolute inset-0 z-0">
-        <Hero3D />
+        <Hero3D onLoaded={onLoaded} />
       </div>
 
       {/* MINIMALIST CENTERED HEADER */}
@@ -69,14 +73,24 @@ export const Hero = () => {
           <motion.a
             href="#about"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
+            animate={{ 
+              opacity: 1,
+              y: [0, 5, 0]
+            }}
+            transition={{ 
+              opacity: { delay: 1, duration: 1 },
+              y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+            }}
             className="group flex flex-col items-center gap-4 pointer-events-auto"
           >
-            <span className="text-[8px] uppercase tracking-[0.4em] text-stone group-hover:text-signal transition-colors">
-              Initiate
-            </span>
-            <div className="w-[1px] h-10 bg-hairline-strong group-hover:bg-signal/50 transition-all origin-top scale-y-100 group-hover:scale-y-125" />
+            <div className="px-4 py-1.5 bg-void/40 backdrop-blur-xl border border-hairline group-hover:border-signal/40 transition-all duration-500 rounded-full">
+              <span className="text-[9px] uppercase tracking-[0.4em] text-bone group-hover:text-signal transition-colors">
+                Initiate
+              </span>
+            </div>
+            <div className="relative">
+              <div className="w-[1px] h-10 bg-hairline-strong group-hover:bg-signal/50 transition-all origin-top scale-y-100 group-hover:scale-y-125" />
+            </div>
           </motion.a>
         </div>
       </div>

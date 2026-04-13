@@ -1,8 +1,33 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-export const Hero3D = () => {
+interface Hero3DProps {
+  onLoaded?: () => void;
+}
+
+export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    // Detect iframe load
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const handleLoad = () => {
+        if (onLoaded) onLoaded();
+      };
+      
+      // If already loaded (cached)
+      if (iframe.contentDocument?.readyState === 'complete') {
+        handleLoad();
+      } else {
+        iframe.addEventListener('load', handleLoad);
+      }
+      
+      return () => {
+        iframe.removeEventListener('load', handleLoad);
+      };
+    }
+  }, [onLoaded]);
 
   useEffect(() => {
     let frameId: number;

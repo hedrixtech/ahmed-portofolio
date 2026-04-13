@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Hero3D } from "./Hero3D";
 
-interface HeroProps {
-  onLoaded?: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
+export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
@@ -16,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
     >
       {/* 3D CORE COMPONENT */}
       <div className="absolute inset-0 z-0">
-        <Hero3D onLoaded={onLoaded} />
+        <Hero3D />
       </div>
 
       {/* MINIMALIST CENTERED HEADER */}

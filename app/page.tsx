@@ -1,22 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
-import { Preloader } from "@/components/ui/Preloader";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
   return (
     <main className="relative min-h-screen">
-      <Preloader isLoading={isLoading} />
       <Navbar />
 
-      <Hero onLoaded={() => setIsLoading(false)} />
+      <Hero />
 
       {/* Full-width rule after hero */}
       <div className="h-[1px] bg-hairline-strong" />

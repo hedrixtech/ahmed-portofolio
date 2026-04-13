@@ -3,7 +3,15 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { useLoading } from "@/context/LoadingContext";
+
 export default function CVPage() {
+  const { setIsLoading } = useLoading();
+
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
+
   return (
     <main className="min-h-screen bg-void flex flex-col">
       {/* HEADER HUD */}

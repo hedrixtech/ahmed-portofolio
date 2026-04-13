@@ -14,6 +14,8 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
 });
 
+import { LayoutWrapper } from "@/components/LayoutWrapper";
+
 export const metadata: Metadata = {
   title: "Ahmed — Systems Engineer",
   description:
@@ -44,7 +46,7 @@ export default function RootLayout({
       </head>
       <body className="bg-void text-bone antialiased">
         <div className="grain-overlay" aria-hidden="true" />
-        {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

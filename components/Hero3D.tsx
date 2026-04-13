@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useLoading } from "@/context/LoadingContext";
 
 interface Hero3DProps {
   onLoaded?: () => void;
@@ -8,11 +9,16 @@ interface Hero3DProps {
 export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [ready, setReady] = useState(false);
+  const { setIsLoading, resetLoading } = useLoading();
 
   useEffect(() => {
+    // Every time Hero mounts, we ensure loading is true
+    resetLoading();
+    
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.type === '3D_READY') {
         setReady(true);
+        setIsLoading(false);
         if (onLoaded) onLoaded();
       }
     };
@@ -23,6 +29,7 @@ export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
     const timeout = setTimeout(() => {
       if (!ready) {
         setReady(true);
+        setIsLoading(false);
         if (onLoaded) onLoaded();
       }
     }, 8000);
@@ -31,7 +38,7 @@ export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
       window.removeEventListener('message', handleMessage);
       clearTimeout(timeout);
     };
-  }, [onLoaded, ready]);
+  }, [onLoaded, ready, setIsLoading, resetLoading]);
 
   useEffect(() => {
     let frameId: number;

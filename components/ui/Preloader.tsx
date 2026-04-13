@@ -8,23 +8,34 @@ interface PreloaderProps {
 
 export const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
   const [complete, setComplete] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) {
-      // Small delay for smooth transition
-      const timer = setTimeout(() => setComplete(true), 800);
+    // Start minimum time timer
+    const timer = setTimeout(() => {
+      setMinTimeElapsed(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Only set complete to true if both conditions are met
+    if (!isLoading && minTimeElapsed) {
+      const timer = setTimeout(() => setComplete(true), 400); // reduced from 1000ms
       return () => clearTimeout(timer);
     }
-  }, [isLoading]);
+  }, [isLoading, minTimeElapsed]);
 
   if (complete) return null;
 
+  const isVisible = isLoading || !minTimeElapsed;
+
   return (
     <AnimatePresence>
-      {isLoading && (
+      {isVisible && (
         <motion.div
            initial={{ opacity: 1 }}
-           exit={{ opacity: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }}
+           exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
            className="fixed inset-0 z-[100] bg-void flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Background Elements */}

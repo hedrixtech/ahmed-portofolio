@@ -1295,6 +1295,13 @@
         }
         setVH();
         window.addEventListener('resize', setVH);
+
+        // Signal parent that 3D is ready after a small delay to ensure rendering has started
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.parent.postMessage({ type: '3D_READY' }, '*');
+            }, 500);
+        });
     </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface Hero3DProps {
   onLoaded?: () => void;
@@ -7,27 +7,31 @@ interface Hero3DProps {
 
 export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Detect iframe load
-    const iframe = iframeRef.current;
-    if (iframe) {
-      const handleLoad = () => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === '3D_READY') {
+        setReady(true);
         if (onLoaded) onLoaded();
-      };
-      
-      // If already loaded (cached)
-      if (iframe.contentDocument?.readyState === 'complete') {
-        handleLoad();
-      } else {
-        iframe.addEventListener('load', handleLoad);
       }
-      
-      return () => {
-        iframe.removeEventListener('load', handleLoad);
-      };
-    }
-  }, [onLoaded]);
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    // Safety fallback: if 3D doesn't load in 8 seconds, force hide preloader
+    const timeout = setTimeout(() => {
+      if (!ready) {
+        setReady(true);
+        if (onLoaded) onLoaded();
+      }
+    }, 8000);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+      clearTimeout(timeout);
+    };
+  }, [onLoaded, ready]);
 
   useEffect(() => {
     let frameId: number;
@@ -89,8 +93,10 @@ export const Hero3D: React.FC<Hero3DProps> = ({ onLoaded }) => {
     <div className="absolute inset-0 z-0 overflow-hidden bg-[#0F1414]">
       <iframe
         ref={iframeRef}
-        src="/hero3d/index.html?v=10"
-        className="w-full h-full border-none pointer-events-auto"
+        src="/hero3d/index.html?v=11"
+        className={`w-full h-full border-none pointer-events-auto transition-opacity duration-1000 ${
+          ready ? "opacity-100" : "opacity-0"
+        }`}
         style={{ touchAction: 'pan-y' }}
         title="Ahmed Ikrami - 3D Hero"
         loading="lazy"

@@ -88,14 +88,25 @@ export const earlyDevelopment = {
 };
 
 export const aiAndSystemDesign = {
-  training: "Google AI Labs / LLM training labs",
-  skills: [
-    "Trained Small Language Models (SLMs)",
-    "Prompt engineering",
-    "Inference pipeline understanding",
-    "System scaling concepts (SLM → LLM)",
-    "Cloud + compute requirement analysis",
+  sections: [
+    {
+      title: "Software Architecture & Large-Scale Systems",
+      org: "Udemy",
+      highlights: [
+        "Studied scalable system design patterns and distributed architectures",
+        "Applied trade-offs between performance, scalability, and cost",
+        "Designed backend structures inspired by production systems",
+      ],
+    },
+    {
+      title: "AI / LLM Training",
+      org: "Google AI Labs",
+      highlights: [
+        "Trained Small Language Models (SLMs) using structured datasets",
+        "Studied inference pipelines and prompt engineering workflows",
+        "Analyzed scaling path from SLM → LLM systems (data, compute, infrastructure)",
+        "Applied AI integration into real-world applications",
+      ],
+    },
   ],
-  system_design_study:
-    "Udemy - Software Architecture Design of Modern Large-Scale Systems",
 };

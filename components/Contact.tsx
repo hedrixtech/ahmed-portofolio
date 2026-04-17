@@ -20,7 +20,7 @@ export const Contact = () => {
 
         <div className="space-y-4">
           <a
-            href="mailto:akro.a2007@gmail.com"
+            href="mailto:ahmedikrami001@gmail.com"
             className="group flex items-center gap-6 py-6 px-6 bg-surface/30 border border-hairline hover:border-signal/40 transition-all duration-500"
           >
             <div className="p-3 bg-void border border-hairline-strong text-signal group-hover:border-signal/60 transition-colors">
@@ -31,7 +31,7 @@ export const Contact = () => {
                 Direct Channel
               </span>
               <span className="font-display text-sm md:text-base text-bone group-hover:text-signal transition-colors">
-              akro.a2007@gmail.com
+              ahmedikrami001@gmail.com
               </span>
             </div>
             <ArrowUpRight className="ml-auto w-4 h-4 text-stone/30 group-hover:text-signal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
